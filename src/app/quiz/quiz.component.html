@@ -1,0 +1,19 @@
+<div *ngFor="let q of questions; let i = index">
+  <h3>{{ q.question }}</h3>
+  <div *ngFor="let opt of q.options">
+    <label>
+      <input type="radio" [name]="'question' + i" [value]="opt" [(ngModel)]="q.selected">
+      {{ opt }}
+    </label>
+  </div>
+  <hr>
+</div>
+
+<button (click)="submitQuiz()">Submit</button>
+<button (click)="resetQuiz()" *ngIf="submitted">Try Again</button>
+
+
+<div *ngIf="submitted">
+  <h2>Your Score: {{ score }} / {{ questions.length }}</h2>
+</div>
+
